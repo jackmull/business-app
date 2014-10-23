@@ -1,0 +1,27 @@
+<!--start menu-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" >
+        <a class="navbar-brand pull-left"
+           ui-sref="home">JKM Product Management</a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="productList">Product List</a></li>
+                <li><a ui-sref="productEdit.info({productId:0})">`
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Add Product</a></li>
+                <li><a ui-sref="priceAnalytics">Price Analytics</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--end menu-->
