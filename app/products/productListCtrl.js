@@ -1,11 +1,10 @@
 /**
  * Created by Jack on 10/3/2014.
  */
-(function (angular) {
+(function (module) {
     'use strict';
 
-    angular.module("productManagement")
-           .controller("ProductListCtrl", ProductListCtrl);
+    module.controller("ProductListCtrl", ProductListCtrl);
 
     ProductListCtrl.$inject = ["productResource"];
     function ProductListCtrl(productResource) {
@@ -22,4 +21,4 @@
             vm.showImage = !vm.showImage;
         };
     }
-}(angular));
+}(angular.module("productManagement")));

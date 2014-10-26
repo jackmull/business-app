@@ -1,11 +1,12 @@
 /**
  * Created by Jack on 10/10/2014.
+ * angular.module("productManagement")
  */
 
-(function () {
+(function (module) {
     "use strict";
-    angular.module("productManagement")
-        .controller("ProductButtonsCtrl", ProductButtonsCtrl);
+
+    module.controller("ProductButtonsCtrl", ProductButtonsCtrl);
 
     function ProductButtonsCtrl() {
         var vm = this;
@@ -62,5 +63,5 @@
             }
         ];
     }
-}());
+}(angular.module("productManagement")));
 

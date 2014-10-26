@@ -1,12 +1,10 @@
 /**
  * Created by Jack on 10/6/2014.
  */
-(function (angular) {
+(function (module) {
     "use strict";
 
-    angular
-        .module("productManagement")
-        .controller("ProductEditCtrl", ProductEditCtrl);
+    module.controller("ProductEditCtrl", ProductEditCtrl);
 
     ProductEditCtrl.$inject = ["product", "$state", "productService"];
 
@@ -19,18 +17,18 @@
         vm.markupPercent = 0;
 
         vm.marginPercent = function () {
-            return productService.calculateMarginPercent(vm.product.price,
+            return productService.calcMarginPercent(vm.product.price,
                 vm.product.cost);
         };
 
-        vm.calculatePrice = function () {
+        vm.calcPrice = function () {
             var price = 0;
 
             if (vm.priceOption == 'amount') {
-                price = productService.calculatePriceFromAmount(
+                price = productService.calcPriceFromAmount(
                     vm.product.cost, vm.markupAmount);
             } else if (vm.priceOption == 'percent') {
-                price = productService.calculatePriceFromPercent(
+                price = productService.calcPriceFromPercent(
                     vm.product.cost, vm.markupPercent);
             }
             vm.product.price = price;
@@ -48,7 +46,7 @@
         };
         vm.cancel = function () {
             $state.go('productList');
-          //  $state.go('productEdit.tags({productId: ' + product.productId + ' })');
+            //  $state.go('productEdit.tags({productId: ' + product.productId + ' })');
         };
         vm.submit = function (isValid) {
             if (!isValid) {
@@ -72,4 +70,4 @@
             vm.product.tags.splice(idx, 1);
         };
     }
-}(angular));
+}(angular.module("productManagement")));

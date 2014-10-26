@@ -19,10 +19,10 @@
         for (var i = 0; i < products.length; i++) {
             var product = products[i];
             product.marginPercent = productService
-                .calculateMarginPercent(product.price, product.cost);
+                .calcMarginPercent(product.price, product.cost);
 
             product.marginAmount = productService
-                .calculateMarginAmount(product.price, product.cost);
+                .calcMarginAmount(product.price, product.cost);
         }
         var orderedProductsAmount = $filter("orderBy")(products, "marginAmount");
         var filteredProductsAmount = $filter("limitTo")(orderedProductsAmount, 5);

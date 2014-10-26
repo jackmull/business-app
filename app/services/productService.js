@@ -1,57 +1,52 @@
 /**
  * Created by Jack on 10/7/2014.
  */
-
-(function () {
+(function (module) {
     "use strict";
 
-    angular
-        .module("common.services")
-        .factory("productService",
-        productService);
-
-    function productService() {
-
-        function calculateMarginPercent(price, cost) {
-            var margin = 0;
-            if (price && cost) {
-                margin = (100 * (price - cost)) / price;
+    module.factory("productService", function productService() {
+            //++
+            var service = {
+                calcMarginPercent: calcMarginPercent,
+                calcMarginAmount: calcMarginAmount,
+                calcPriceFromPercent: calcPriceFromPercent,
+                calcPriceFromAmount: calcPriceFromAmount
+            };
+            return service;
+            //--
+            function calcMarginPercent(price, cost) {
+                var margin = 0;
+                if (price && cost) {
+                    margin = (100 * (price - cost)) / price;
+                }
+                margin = Math.round(margin);
+                return margin;
             }
-            margin = Math.round(margin);
-            return margin;
-        }
 
-        function calculateMarginAmount(price, cost) {
-            var margin = 0;
-            if (price && cost) {
-                margin = price - cost;
+            function calcMarginAmount(price, cost) {
+                var margin = 0;
+                if (price && cost) {
+                    margin = price - cost;
+                }
+                return margin;
             }
-            return margin;
-        }
 
-        function calculatePriceFromPercent(cost, percent) {
-            var price = cost;
-            if (price && percent) {
-                price = cost + (cost * percent / 100);
-                price = (Math.round(price * 100)) / 100;
+            function calcPriceFromPercent(cost, percent) {
+                var price = cost;
+                if (price && percent) {
+                    price = cost + (cost * percent / 100);
+                    price = (Math.round(price * 100)) / 100;
+                }
+                return price;
             }
-            return price;
-        }
 
-        function calculatePriceFromAmount(cost, amount) {
-            var price = cost;
-            if (price && amount) {
-                price = cost + amount;
-                price = (Math.round(price * 100)) / 100;
+            function calcPriceFromAmount(cost, amount) {
+                var price = cost;
+                if (price && amount) {
+                    price = cost + amount;
+                    price = (Math.round(price * 100)) / 100;
+                }
+                return price;
             }
-            return price;
-        }
-
-        return {
-            calculateMarginPercent: calculateMarginPercent,
-            calculateMarginAmount: calculateMarginAmount,
-            calculatePriceFromPercent: calculatePriceFromPercent,
-            calculatePriceFromAmount: calculatePriceFromAmount
-        };
-    }
-}());
+        });
+}(angular.module("common.services")));

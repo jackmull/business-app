@@ -4,6 +4,7 @@
     var app = angular.module('productManagement',
         [
             "common.services",
+            'ngMessages',
             "productResourceMock"
         ]);
 
@@ -26,7 +27,6 @@
                     templateUrl: "/products/productDetailView.html",
                     controller: "ProductDetailCtrl as vm",
                     resolve: {
-                        productResource: "productResource",
                         product: function (productResource, $stateParams) {
                             var productId = $stateParams.productId;
                             return productResource.get(
@@ -35,13 +35,13 @@
                         }
                     }
                 })
+//+     Product edit code
                 .state("productEdit", {
                     abstract: true,
                     url: "/products/edit/:productId",
                     templateUrl: "/products/productEditView.html",
                     controller: "ProductEditCtrl as vm",
                     resolve: {
-                        productResource: "productResource",
                         product: function (productResource, $stateParams) {
                             var productId = $stateParams.productId;
                             return productResource.get(
@@ -62,6 +62,7 @@
                     url: "/tags",
                     templateUrl: "/products/productEditTagsView.html"
                 })
+//-             End Product edit code
                 .state("priceAnalytics", {
                     url: "/priceAnalytics",
                     templateUrl: "/prices/priceAnalyticsView.html",
