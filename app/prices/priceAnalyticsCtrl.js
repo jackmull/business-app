@@ -1,17 +1,13 @@
 /**
  * Created by Jack on 10/8/2014.
  */
-(function () {
+(function (productManagementModule) {
     "use strict";
 
-    angular
-        .module("productManagement")
-        .controller("PriceAnalyticsCtrl",
-            [   "$scope",
-                "$filter",
-                "products",
-                "productService",
-                 PriceAnalyticsCtrl]);
+    productManagementModule
+        .controller("PriceAnalyticsCtrl", PriceAnalyticsCtrl);
+
+    PriceAnalyticsCtrl.$inject = [ "$scope", "$filter", "products", "productService"];
 
     function PriceAnalyticsCtrl($scope, $filter, products, productService) {
         $scope.title = "Price Analytics";
@@ -46,9 +42,12 @@
             title: "Top $ Margin Products",
             tooltips: true,
             labels: false,
-            mouseover: function(){},
-            mouseout: function(){},
-            click: function(){},
+            mouseover: function () {
+            },
+            mouseout: function () {
+            },
+            click: function () {
+            },
             legend: {
                 display: true,
                 position: 'right'
@@ -75,14 +74,17 @@
             title: "Top % Margin Products",
             tooltips: true,
             labels: false,
-            mouseover: function(){},
-            mouseout: function(){},
-            click: function(){},
+            mouseover: function () {
+            },
+            mouseout: function () {
+            },
+            click: function () {
+            },
             legend: {
                 display: true,
                 position: 'right'
             }
         };
     }
-}());
+}(angular.module("productManagement")));
 
